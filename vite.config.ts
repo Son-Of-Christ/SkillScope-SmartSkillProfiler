@@ -8,8 +8,8 @@ export default defineConfig({
     port: 5173
   },
   build: {
+    minify:'esbuild',
     outDir: 'dist',
     sourcemap: false,
-    minify: 'terser'
   }
 })

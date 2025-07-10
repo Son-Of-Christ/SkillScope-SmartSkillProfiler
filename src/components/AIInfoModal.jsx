@@ -1,3 +1,5 @@
+// AllnfoModal: Information popup - Explains the AI technology (Gemini 1.5 Flash) and how analysis works
+
 import React from 'react';
 import { X, Brain, Zap, Shield, CheckCircle } from 'lucide-react';
 

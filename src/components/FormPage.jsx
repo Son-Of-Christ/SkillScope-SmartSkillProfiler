@@ -1,11 +1,25 @@
+//FormPage: Multi-step form - Collects user info, skills, and experience with validation and duplicate detection
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSkill } from '../context/SkillContext';
+import DuplicateAnalysisModal from './DuplicateAnalysisModal';
 import { ArrowLeft, ArrowRight, User, Mail, Briefcase, FileText, Target, Loader, Brain, AlertCircle } from 'lucide-react';
 
 const FormPage = () => {
   const navigate = useNavigate();
-  const { formData, updateFormData, analyzeSkill, loading, error } = useSkill();
+  const { 
+    formData, 
+    updateFormData, 
+    analyzeSkill, 
+    loading, 
+    error,
+    showDuplicateModal,
+    existingAnalysis,
+    handleViewExistingResults,
+    handleStartFresh,
+    setShowDuplicateModal
+  } = useSkill();
   const [errors, setErrors] = useState({});
   const [currentStep, setCurrentStep] = useState(1);
 
@@ -54,11 +68,29 @@ const FormPage = () => {
     if (validateStep(2)) {
       try {
         await analyzeSkill();
-        navigate('/results');
+        // Only navigate if we don't show the duplicate modal
+        if (!showDuplicateModal) {
+          navigate('/results');
+        }
       } catch (error) {
         console.error('Analysis failed:', error);
         // Handle error appropriately
       }
+    }
+  };
+
+  const handleViewResults = async () => {
+    handleViewExistingResults();
+    navigate('/results');
+  };
+
+  const handleStartFreshAnalysis = async () => {
+    try {
+      await handleStartFresh();
+      navigate('/results');
+    } catch (error) {
+      console.error('Start fresh failed:', error);
+      // Error is already handled in context
     }
   };
 
@@ -90,7 +122,7 @@ const FormPage = () => {
             </button>
             <div className="flex items-center space-x-2">
               <Target className="w-8 h-8 text-primary-600" />
-              <span className="text-xl font-bold text-gray-900">SkillScope: Smart Skill Profiler</span>
+              <span className="text-xl font-bold text-gray-900">SkillScope:SmartSkillProfiler</span>
             </div>
           </div>
         </div>
@@ -318,6 +350,16 @@ const FormPage = () => {
           </p>
         </div>
       </div>
+
+      {/* Duplicate Analysis Modal */}
+      <DuplicateAnalysisModal
+        isOpen={showDuplicateModal}
+        onClose={() => setShowDuplicateModal(false)}
+        onViewResults={handleViewResults}
+        onStartFresh={handleStartFreshAnalysis}
+        email={formData.email}
+        fullName={existingAnalysis?.user_name}
+      />
     </div>
   );
 };

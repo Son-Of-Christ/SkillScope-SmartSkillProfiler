@@ -1,3 +1,5 @@
+//Landing page or HomePage for Our Web application:Hero section, features showcase, testimonials, and CTA to start analysis
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowRight, Target, Lightbulb, TrendingUp, Users, Star, CheckCircle, Brain, Zap, Shield } from 'lucide-react';

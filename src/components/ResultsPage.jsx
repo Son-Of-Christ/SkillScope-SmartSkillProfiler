@@ -1,3 +1,5 @@
+//Results page: Results display - Shows AI-generated profile summary, skill recommendations, and confidence score
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSkill } from '../context/SkillContext';
