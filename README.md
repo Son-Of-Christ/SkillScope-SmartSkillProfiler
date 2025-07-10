@@ -142,13 +142,13 @@ CREATE TABLE skill_analyses (
 
 **Frontend (.env)**
 ```env
-VITE_SUPABASE_URL=your_supabase_project_url
-VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+VITE_SUPABASE_URL=supabase_project_url
+VITE_SUPABASE_ANON_KEY=supabase_anon_key
 ```
 
 **Edge Function (Supabase Dashboard)**
 ```env
-GEMINI_API_KEY=your_google_ai_studio_api_key
+GEMINI_API_KEY=google_ai_studio_api_key
 ```
 
 ### Google AI Studio Setup
