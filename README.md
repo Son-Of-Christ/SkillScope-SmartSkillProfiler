@@ -100,6 +100,21 @@ CREATE TABLE skill_analyses (
 4. **Database Storage** → Results saved to PostgreSQL with RLS
 5. **Results Display** → AI insights presented to user
 
+### **Smart User Experience**
+- ✅ **Duplicate Detection** - Prevents redundant analyses
+- ✅ **Smart Popup System** - Options to view existing or start fresh
+- ✅ **Progressive Forms** - Step-by-step data collection
+- ✅ **Responsive Design** - Mobile-first approach
+- ✅ **Real-time Validation** - Instant feedback
+- ✅ **Loading States** - Clear processing indicators
+- ✅ **Error Handling** - User-friendly error messages
+
+### **Advanced Features**
+- 🔄 **Analysis Management** - View previous results or create new ones
+- 🗑️ **Data Cleanup** - Option to delete old analysis and start fresh
+- 📧 **Email-based Tracking** - Identifies users by email for continuity
+- 🔒 **Secure Processing** - All data handled securely
+
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -165,11 +180,12 @@ skillscope-app/
 │   │   ├── LandingPage.jsx  # Home page
 │   │   ├── FormPage.jsx     # Skill input form
 │   │   ├── ResultsPage.jsx  # AI analysis results
-│   │   └── AIInfoModal.jsx  # AI technology info
+│   │   ├── AIInfoModal.jsx  # AI technology info
+│   │   └── DuplicateAnalysisModal.jsx # Duplicate handling
 │   ├── context/             # React context
 │   │   └── SkillContext.jsx # Global state management
 │   ├── lib/                 # Utilities
-│   │   └── supabase.js      # Supabase client
+│   │   └── supabase.js      # Supabase client & helpers
 │   └── index.css           # Global styles
 ├── supabase/
 │   ├── functions/          # Edge Functions
@@ -196,12 +212,21 @@ skillscope-app/
 - ✅ **Confidence Scoring** - Analysis reliability metrics
 - ✅ **Data Persistence** - Secure result storage
 
-### User Experience
-- ✅ **Responsive Design** - Mobile-first approach
-- ✅ **Progressive Forms** - Step-by-step data collection
-- ✅ **Real-time Validation** - Instant feedback
-- ✅ **Loading States** - Clear processing indicators
-- ✅ **Error Handling** - User-friendly error messages
+# User Experience Flow
+
+### **New User**
+1. Fill out form with personal info and skills
+2. Click "Get AI Analysis"
+3. AI processes and generates insights
+4. View personalized results
+
+### **Returning User**
+1. Fill out form with same email
+2. Click "Get AI Analysis"
+3. System detects existing analysis
+4. Choose: **View Results** or **Start Fresh**
+5. Seamless experience either way
+
 
 ## 🚀 Deployment
 
